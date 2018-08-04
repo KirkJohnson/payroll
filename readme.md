@@ -6,7 +6,34 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
+## Running App
 
+This app was built with Laravel.  In order to run it set up a Homestead machine following these <a href="https://laravel.com/docs/5.6/homestead">instructions</a>, but don't create a new Laravel project.  I've included a Homestead.yaml file in this repo if you want to use the information to model your Homestead box and configuration to the same as was used in this app.  If you change database info make sure to update that on the .env file in the Laravel install.  
+
+Put this repo in the same spot you are telling your Homestead box it will live.  For me that was 
+```
+~/code/payroll
+```
+and it was mapped to
+```
+/home/vagrant/code/payroll
+```
+on the Homestead box
+
+After cloining the repo either in the project root on your local machine or ssh'd in the Homestead vagrant box run
+```
+composer install
+```
+copy the .env.example file to .env and make sure the db information matchees how you have set up your Homestead box.
+
+Next (making sure you are ssh'd into your Homestead box and in the project root there) run 
+```
+php artisan key:generate
+
+php artisan migrate
+```
+
+The project should be ready for you to now visit and use by visiting the domain you set it to in your hosts file.
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
